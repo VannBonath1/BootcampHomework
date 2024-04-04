@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Print all prime numbers between 1 and 100
+      for (let number = 2; number <= 100; number++) {
+        let isPrime = true;
+
+        // Check if the number is divisible by any other number except 1 and itself
+        for (let divisor = 2; divisor < number; divisor++) {
+          if (number % divisor === 0) {
+            isPrime = false;
+            break;
+          }
+        }
+
+        // If the number is prime, print it
+        if (isPrime) {
+          console.log(number);
+        }
+      }
+    </script>
+  </body>
+</html>

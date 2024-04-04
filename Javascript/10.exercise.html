@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Print all prime numbers between 1 and 100
+      const numbers = [3, 1, 4, 20, 5, 9];
+      let largest = numbers[0]; // Initialize largest with the first element
+
+      for (const number of numbers) {
+        if (number > largest) {
+          largest = number;
+        }
+      }
+
+      console.log("The largest number is", largest);
+    </script>
+  </body>
+</html>
