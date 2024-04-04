@@ -7,14 +7,14 @@
   </head>
   <body>
     <script>
-      var number = [1, 5, 6, 2, 5, 6, 7, 8, 9, 10];
+      var number = [8, 9, 10];
       var counteven = 0;
       var countodd = 0;
 
-      for (let index = 1; index <= 10; index++) {
-        if (index % 2 == 0) {
+      for (let index = 0; index < number.length; index++) {
+        if (number[index] % 2 == 0) {
           counteven++;
-        } else if (index % 2 != 0) {
+        } else if (number[index] % 2 != 0) {
           countodd++;
         }
       }
