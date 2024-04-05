@@ -1,0 +1,243 @@
+:root {
+  --color-blue: rgb(26, 115, 232);
+  --color-gray: rgb(237, 237, 237);
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  word-wrap: break-word;
+}
+a {
+  color: rgb(26, 115, 232);
+}
+.download-text {
+  font-size: 22px;
+  font-weight: 600;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+.header-left-container {
+  width: 27.5%;
+  display: flex;
+  align-items: center;
+}
+.logo {
+  width: 24px;
+  height: 24px;
+  padding: 0 21px;
+}
+.header-center-container {
+  width: 45%;
+  display: flex;
+  align-items: center;
+}
+.header-search {
+  background-color: rgb(225, 225, 225);
+  width: 100%;
+  height: 50%;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+}
+.search-icon {
+  width: 15px;
+  height: 15px;
+  padding: 10px;
+}
+.search-title {
+  color: rgb(176, 176, 176);
+  font-size: 12px;
+}
+.header-right-container {
+  width: 27.5%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-right: 20px;
+}
+
+.dot-icon {
+  width: 18px;
+  height: 18px;
+}
+.title-container {
+  width: 45%;
+  margin: auto;
+  margin-top: 21px;
+  margin-bottom: 21px;
+  text-align: center;
+  font-size: 13px;
+  color: rgb(188, 188, 188);
+  font-weight: 600px;
+}
+span.title {
+  position: relative;
+}
+.building-icon {
+  width: 40px;
+  position: absolute;
+  left: -45px;
+  top: -5px;
+}
+.date {
+  width: 45%;
+  margin: auto;
+  margin-top: 21px;
+  margin-bottom: 6px;
+  color: rgb(82, 82, 82);
+  font-weight: 400;
+  font-size: 14px;
+  padding: 6px;
+}
+.card-container {
+  width: 45%;
+  margin: auto;
+  min-height: 132px;
+  border-radius: 10px;
+  box-shadow: 0 0 3px 1px rgb(217, 217, 217);
+  margin: 6px auto;
+  display: flex;
+}
+.file-icon-left-container {
+  min-width: 15%;
+  min-height: 132px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid rgb(186, 186, 186);
+}
+.file-icon-center-container {
+  min-width: 70%;
+  padding: 16px 16px 16px 24px;
+  font-size: 13px;
+}
+.file-icon-title {
+  font-weight: 700;
+}
+.file-icon-text {
+  color: rgb(95, 99, 104);
+  font-size: 13px;
+  padding-top: 6px;
+}
+.show-in-folder {
+  margin-top: 30px;
+}
+.file-icon-right-container {
+  width: 15%;
+  min-height: 132px;
+  margin: auto;
+}
+.file-icon-dot-icon-container {
+  margin: 21px;
+}
+#popup-toggle:checked ~ .popup-form {
+  display: block;
+}
+#popup-toggle:checked + .blur-background {
+  display: block;
+}
+.plus-label {
+  position: fixed;
+  right: 40px;
+  bottom: 30px;
+  cursor: pointer;
+}
+.plus-icon {
+  width: 50px;
+  height: 50px;
+}
+.popup-form {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  width: 50%;
+  height: 50%;
+  z-index: 2;
+
+  border-radius: 6px;
+  background-color: white;
+  padding: 16px;
+}
+.close-button {
+  position: absolute;
+  right: 21px;
+  top: 21px;
+  width: 20px;
+  cursor: pointer;
+}
+.popup-title {
+  font-size: 14px;
+}
+.file-name {
+  font-size: 12px;
+  margin-top: 21px;
+  color: var(--color-blue);
+  font-weight: 600;
+}
+.file-name-input {
+  all: unset;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 6px;
+  padding: 6px;
+  border-radius: 6px;
+  background-color: rgb(237, 237, 237);
+}
+.file-link {
+  font-size: 12px;
+  margin-top: 6px;
+  color: var(--color-blue);
+  font-weight: 600;
+}
+.file-link-input {
+  all: unset;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 6px;
+  padding: 6px;
+  border-radius: 6px;
+  background-color: rgb(237, 237, 237);
+}
+.choose-file {
+  padding-top: 21px;
+}
+.save-button {
+  all: unset;
+  background-color: var(--color-blue);
+  padding: 6px 21px;
+  border-radius: 6px;
+  font-weight: 600;
+  color: white;
+  position: absolute;
+  bottom: 21px;
+  right: 21px;
+  cursor: pointer;
+}
+.cancel-button {
+  all: unset;
+  background-color: var(--color-gray);
+  padding: 6px 21px;
+  border-radius: 6px;
+  font-weight: 600;
+  color: black;
+  position: absolute;
+  bottom: 21px;
+  right: 106px;
+  cursor: pointer;
+}
+
+.blur-background {
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  z-index: 1;
+  opacity: 0.4;
+}

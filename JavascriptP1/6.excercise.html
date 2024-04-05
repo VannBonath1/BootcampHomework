@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var number = [8, 9, 10];
+      var counteven = 0;
+      var countodd = 0;
+
+      for (let index = 0; index < number.length; index++) {
+        if (number[index] % 2 == 0) {
+          counteven++;
+        } else if (number[index] % 2 != 0) {
+          countodd++;
+        }
+      }
+      console.log("Even number:", counteven);
+      console.log("odd number:", countodd);
+    </script>
+  </body>
+</html>
