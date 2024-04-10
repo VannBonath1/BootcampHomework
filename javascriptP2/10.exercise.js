@@ -9,4 +9,4 @@ function factorialNumber(nonnegative) {
   }
   return factorial;
 }
-console.log(factorialNumber(7));
+console.log(factorialNumber(4));

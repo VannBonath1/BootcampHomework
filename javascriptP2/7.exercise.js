@@ -13,4 +13,4 @@ function countVowel(string) {
   }
   return count;
 }
-console.log(countVowel("hola hello"));
+console.log(countVowel("hola hellooo"));
