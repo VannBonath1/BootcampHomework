@@ -8,6 +8,7 @@ const groupedItems = items.reduce((acc, item) => {
   const { category, name } = item;
   acc[category] = acc[category] || [];
   acc[category].push(name);
+
   return acc;
 }, {});
 

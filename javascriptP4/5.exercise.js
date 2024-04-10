@@ -1,7 +1,6 @@
-const arrayNumber = [2, 4, 6, 1];
+const numbers = [30, 3, 8, 2, 31];
+const max = numbers.reduce((acc, cur) => {
+  return Math.max(acc, cur);
+}, 0);
 
-let result = arrayNumber.reduce(
-  (accumulator, currentValue) => accumulator + currentValue,
-  0
-);
-console.log(result);
+console.log(max);
