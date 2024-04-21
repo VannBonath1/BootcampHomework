@@ -4,7 +4,7 @@ class Chief {
   }
 }
 
-class IndiaChief extends Chief {}
+class IndiaChief extends Chief {} //here is inheritance
 
 const cooking2 = new IndiaChief();
 cooking2.fryRice();

@@ -1,6 +1,6 @@
 class Chief {
   constructor(secretRecipe) {
-    this._secretRecipe = secretRecipe;
+    this._secretRecipe = secretRecipe; // this is encapsulation
   }
   getRecipe() {
     return this._secretRecipe;
