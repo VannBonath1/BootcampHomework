@@ -1,5 +1,5 @@
 const color = ["Red", "Blue", "Green"];
-const [red, blue, green] = color;
+const [red, , green] = color;
 console.log(red);
-console.log(blue);
+    
 console.log(green);

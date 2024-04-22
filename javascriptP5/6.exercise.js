@@ -6,3 +6,4 @@ const points = [
 const [firstpoint, ...secondpoint] = points;
 console.log(firstpoint);
 console.log(secondpoint);
+

@@ -4,5 +4,5 @@ function anyNumber(...num) {
   return sum;
 }
 
-let result = anyNumber(1, 2, 3, 4, 5, 5, 6, 7);
+let result = anyNumber(1, 1, 1, 1);
 console.log(result);

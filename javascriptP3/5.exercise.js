@@ -1,72 +1,72 @@
-const fs = require("node:fs");
-let append;
-let output2 = "";
-let append2;
+const fs = require("fs");
 
-fs.readFile(
-  "c:/Users/konbr/OneDrive/Desktop/Full stack development bootcamp 4 at sabaicode/Coding in bootcamp 4/javascriptP3/input.txt",
-  "utf8",
-  (err, data) => {
+function readFile(filePath, callback) {
+  fs.readFile(filePath, "utf-8", (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      callback(null, data);
+    }
+  });
+}
+
+function writeFileFunction(filepath, content, callback) {
+  fs.writeFile(filepath, content, (err) => {
     if (err) {
       console.error(err);
-      return;
+    } else {
+      callback(content);
     }
+  });
+}
 
-    append = data + " First modification";
-    fs.appendFile("input.txt", append, (err) => {
-      if (err) {
-        console.error(err);
-      } else {
-        fs.writeFile(
-          "c:/Users/konbr/OneDrive/Desktop/Full stack development bootcamp 4 at sabaicode/Coding in bootcamp 4/javascriptP3/output1.txt",
-          append,
-          (err) => {
-            if (err) {
-              console.error(err);
-            } else {
-              fs.readFile(
-                "c:/Users/konbr/OneDrive/Desktop/Full stack development bootcamp 4 at sabaicode/Coding in bootcamp 4/javascriptP3/output1.txt",
-                "utf8",
-                (err, append) => {
-                  if (err) {
-                    console.error(err);
-                    return;
-                  }
+function appendFunction(filepath, content, callback) {
+  fs.appendFile(filepath, content, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      callback(content);
+    }
+  });
+}
 
-                  fs.writeFile(
-                    "c:/Users/konbr/OneDrive/Desktop/Full stack development bootcamp 4 at sabaicode/Coding in bootcamp 4/javascriptP3/output2.txt",
-                    output2,
-                    (err) => {
-                      if (err) {
-                        console.error(err);
-                      } else {
-                        append2 = append + " Second modification";
-                        fs.appendFile("output2.txt", append2, (err) => {
-                          if (err) {
-                            console.error(err);
-                          } else {
-                            fs.readFile(
-                              "c:/Users/konbr/OneDrive/Desktop/Full stack development bootcamp 4 at sabaicode/Coding in bootcamp 4/javascriptP3/output2.txt",
-                              "utf8",
-                              (err, append2) => {
-                                if (err) {
-                                  console.error(err);
-                                  return;
-                                }
-                                console.log("final result:", append2);
-                              }
-                            );
-                          }
-                        });
+readFile(
+  "c:/Users/konbr/OneDrive/Desktop/Full stack development bootcamp 4 at sabaicode/Coding in bootcamp 4/javascriptP3/input.txt",
+  (err, data1) => {
+    console.log("read :", data1);
+    appendFunction("input.txt", " first modification", (data2) => {
+      console.log("append 1:", data2);
+      const newdata = data1 + data2;
+      writeFileFunction(
+        "c:/Users/konbr/OneDrive/Desktop/Full stack development bootcamp 4 at sabaicode/Coding in bootcamp 4/javascriptP3/output1.txt",
+        newdata,
+        (data3) => {
+          console.log("write file 1:", data3);
+          readFile(
+            "c:/Users/konbr/OneDrive/Desktop/Full stack development bootcamp 4 at sabaicode/Coding in bootcamp 4/javascriptP3/output1.txt",
+            (err, data4) => {
+              console.log("read file 2:", data4);
+              appendFunction("output1.txt", " second modification", (data5) => {
+                console.log("append 2:", data5);
+                const newdata2 = data4 + data5;
+                writeFileFunction(
+                  "c:/Users/konbr/OneDrive/Desktop/Full stack development bootcamp 4 at sabaicode/Coding in bootcamp 4/javascriptP3/output2.txt",
+                  newdata2,
+                  (data6) => {
+                    console.log("write file 2:", data6);
+                    readFile(
+                      "c:/Users/konbr/OneDrive/Desktop/Full stack development bootcamp 4 at sabaicode/Coding in bootcamp 4/javascriptP3/output2.txt",
+                      (err, data7) => {
+                        console.log("read final result:", data7);
                       }
-                    }
-                  );
-                }
-              );
+                    );
+                  }
+                );
+              });
             }
-          }
-        );
-      }
+          );
+        }
+      );
     });
   }
 );
