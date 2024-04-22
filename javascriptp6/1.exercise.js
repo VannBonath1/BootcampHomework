@@ -1,7 +1,7 @@
 const mockDatabase = [
-  { id: 1, name: "sok" },
-  { id: 2, name: "sao" },
-  { id: 3, name: "pisey" },
+  { id: 0, name: "sok" },
+  { id: 1, name: "sao" },
+  { id: 2, name: "pisey" },
 ];
 
 function getUserById(userId, idSearch, callback) {
