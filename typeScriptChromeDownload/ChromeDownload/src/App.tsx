@@ -1,95 +1,80 @@
 import React, { useState } from "react";
-import mp3Icon from "./assets/mp3.jpg";
-import img from "./assets/img.jpg";
-import pdf from "./assets/pdf.png";
 import chrome from "./assets/chrome.png";
-import utorrent from "./assets/utorrent.png";
 import searchIcon from "./assets/search.png";
 import dotIcon from "./assets/dots.png";
+import plusIcon from "./assets/plus.png";
+import closebutton from "./assets/close-button.png";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { z } from "zod";
 
 interface Item {
-  id: number;
-  name: string;
-  link: string;
-  img: string;
+  fileName: string;
+  creator: string;
+  image: string;
 }
 
-const initialItems: Item[] = [
-  {
-    id: 1,
-    name: "ស្រលាញ់គេម្នាក់ឯង - ហេង_ ពិទូ [ CLASSIC ] (mp3cut.net).mp3",
-    link: "blob:https://mp3cut.net/81ce676d-58ae-4833-bd99-379e3fd6657a",
-    img: mp3Icon,
-  },
-  {
-    id: 2,
-    name: "utorrent_installer.exe",
-    link: "blob:https://www.utorrent.com/b44d4d79-6c7c-43d3-86d4-3713919b8669",
-    img: utorrent,
-  },
-  {
-    id: 3,
-    name: "rise_of_the_ronin_2024_video_game-wallpaper-1920x1080.jpg",
-    link: "https://wallpaperswide.com",
-    img: img,
-  },
-  {
-    id: 4,
-    name: "images.png",
-    link: "https://encrypted-tbn0.gstatic.com",
-    img: img,
-  },
-  {
-    id: 5,
-    name: "medium-levi-ackerman-aot-armin-attack-on-titans-captain-levi-original-imagayfqrwkvy6ja.webp",
-    link: "https://rukminim2.flixcart.com",
-    img: chrome,
-  },
-  {
-    id: 6,
-    name: "Levi_Ackerman.webp",
-    link: "https://static.wikia.nocookie.net",
-    img: chrome,
-  },
-  {
-    id: 7,
-    name: "unnamed.jpg",
-    link: "https://lh3.googleusercontent.com",
-    img: img,
-  },
-  {
-    id: 8,
-    name: "crop-woman-measuring-pulse-patient.jpg",
-    link: "https://downloadscdn6.freepik.com",
-    img: img,
-  },
-  {
-    id: 9,
-    name: "schematiq.pdf",
-    link: "https://export-download.canva.com",
-    img: pdf,
-  },
-  {
-    id: 10,
-    name: "images.png",
-    link: "https://encrypted-tbn2.gstatic.com",
-    img: img,
-  },
-];
+// zod
+const schema = z.object({
+  fileName: z.string().min(1, { message: "File name is required" }),
+  creator: z
+    .string()
+    .min(3, { message: "Creator must be at least 3 characters" }),
+  image: z.any(),
+});
+type FormInputs = z.infer<typeof schema>;
+//end zod
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [showPopup, setShowPopup] = useState<boolean>(false);
+  const [initialItems, setInitialItems] = useState<Item[]>([
+    {
+      fileName: "GamePlay.exe",
+      creator: "Bonath",
+      image: "",
+    },
+  ]);
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
+  // zod
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormInputs>({ resolver: zodResolver(schema) });
 
+  const onSubmit: SubmitHandler<FormInputs> = (data) => {
+    console.log(data);
+    setInitialItems([
+      ...initialItems,
+      {
+        fileName: data.fileName,
+        creator: data.creator,
+        image: data.image,
+      },
+    ]);
+    setShowPopup(false);
+  };
+  // end zod
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value.toLowerCase());
   };
 
   const filteredItems = initialItems.filter((initialItems) =>
-    initialItems.name.toLowerCase().includes(searchTerm)
+    initialItems.fileName.toLowerCase().includes(searchTerm)
   );
+
+  const removeItem = (index: number) => {
+    setInitialItems(
+      initialItems.filter((initialItems, index) => index !== index)
+    );
+  };
 
   return (
     <>
+      {/* Search-------------------- */}
       <div className="header-container">
         <div className="header-left">
           <img className="chrome-logo" src={chrome} alt="" />
@@ -109,22 +94,68 @@ function App() {
           <img className="dot-icon" src={dotIcon} alt="" />
         </div>
       </div>
-
+      {/* Card-------------------- */}
       <ul className="ul-card-container">
         <div className="date">Today</div>
-        {filteredItems.map((item) => (
-          <li className="li-card-container" key={item.id}>
+        {filteredItems.map((item, index) => (
+          <li className="li-card-container" key={index}>
+            <div key={index} onClick={() => removeItem(index)}>
+              <img className="x-icon" src={closebutton} alt="" />
+            </div>
             <div className="left-container">
-              <img className="mp3-icon" src={item.img} alt="Big oof" />
+              <img className="mp3-icon" src={item.image} alt="" />
             </div>
             <div className="right-container">
-              <div className="file-name">{item.name}</div>
-              <div className="link-name">{item.link}</div>
+              <div className="file-name">{item.fileName}</div>
+              <div className="link-name">{item.creator}</div>
               <div className="show-in-folder">Show in folder</div>
             </div>
           </li>
         ))}
       </ul>
+      {/* Float button-------------------- */}
+      <div>
+        <a href="#" onClick={togglePopup}>
+          <img className="plus-icon" src={plusIcon} alt="" />
+        </a>
+      </div>
+      {/* Popup */}
+      {showPopup && (
+        <form action="" onSubmit={handleSubmit(onSubmit)}>
+          <div className="popup">
+            <label className="file-name-label">File Name</label>
+            <br />
+            <input
+              className="file-name-input"
+              type="text"
+              {...register("fileName", { required: true })}
+            />
+            {errors.fileName && <span>{errors.fileName.message}</span>}
+            <br />
+            <label className="creator-label">Creator</label>
+            <br />
+            <input
+              className="creator-input"
+              type="text"
+              {...register("creator", { required: true })}
+            />
+            {errors.creator && <span>{errors.creator.message}</span>}
+            <br />
+            <input
+              className="upload-image"
+              type="file"
+              {...(register("image"), { required: true })}
+            />
+
+            <button className="close-button" onClick={togglePopup}>
+              Close
+            </button>
+            <button className="create-button" type="submit">
+              Create
+            </button>
+          </div>
+        </form>
+      )}
     </>
   );
 }
