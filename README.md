@@ -58,7 +58,7 @@ This section we lists all library and framework that make this project
 <p>The project follows a microservices architecture within a monorepo setup. Below is an overview of the directory structure and the purpose of each component:</p>
 
 ```
-CHECKME
+checkme
 ├── .github
 │   └── workflows
 │       ├── main.yml
@@ -127,7 +127,7 @@ git clone https://github.com/neakhatka/neakhatka.git
 2. Navigate to the Project Directory:
 
 ```sh
-cd neakhatka/app
+cd checkme/app
 ```
 
 3. Install Dependencies:
@@ -166,7 +166,7 @@ git clone https://github.com/neakhatka/neakhatka.git
 2. Navigate to the Project Directory:
 
 ```sh
-cd neakhatka
+cd checkme
 ```
 
 3. Install Dependencies:
