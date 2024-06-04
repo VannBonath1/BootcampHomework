@@ -27,18 +27,18 @@ Our website is Blood Pressure Monitoring System aims to develop an innovative, u
 
 ## Our vision
 
-Change the way companies and internship seekers connect, make it easier and more effective.
-<a href="https://www.canva.com/design/DAGGJAb9sDU/FqSE7DVtbMQpw5yNbCbpOA/edit?utm_content=DAGGJAb9sDU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">Product vision board</a>
+Guide everyone to a healthier life style
+<a href="https://www.canva.com/design/DAGHJ5o7Rjc/w8SN2DBhXLgre1fxVirX3w/edit?utm_content=DAGHJ5o7Rjc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">Product vision board</a>
 
 ## Our mission
 
-Built a simplify platform that help both companies and seekers that matching requirement and seeker’s skill
+Anyone can easily understand the meaning behind their blood pressure test result
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## UI design
 
-- [![Static Badge](https://img.shields.io/badge/Figma-2C2D34?style=for-the-badge&logo=figma&logoColor=fff&color=%232C2D34)](https://www.figma.com/design/Cvvmjfhl1K2c8EkXBRK3OF/Neakhatka?node-id=22-18&t=3YcYKBcPRNFPZCh9-1)
+- [![Static Badge](https://img.shields.io/badge/Figma-2C2D34?style=for-the-badge&logo=figma&logoColor=fff&color=%232C2D34)](https://www.figma.com/design/crMDtSSVv5vX7sIZc8jCWN/Team-Project-Check-Me?node-id=205-108&t=fR3Ai4jI02tEYQvX-0)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -58,7 +58,7 @@ This section we lists all library and framework that make this project
 <p>The project follows a microservices architecture within a monorepo setup. Below is an overview of the directory structure and the purpose of each component:</p>
 
 ```
-NEAKHATKA
+CHECKME
 ├── .github
 │   └── workflows
 │       ├── main.yml
@@ -191,10 +191,10 @@ yarn start:docker
 
 ## Contact
 
-Neakhatka - neakhatka@gmail.com <br/>
-Team members - svatmanith76@gmail.com - sanvisal2302@gmail.com - rathna.chh@gmail.com
+CheckMe - checkme@gmail.com <br/>
+Team members - vannbonath1@gmail.com - nhamchamnes@gmail.com - info.thoeurnbunthorn@gmail.com - chhornsreyproek@gmail.com
 
-Project Link: [https://github.com/neakhatka/neakhatka](https://github.com/neakhatka/neakhatka)
+Project Link: [https://github.com/sabaicode-dev/check-me](https://github.com/sabaicode-dev/check-me)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
