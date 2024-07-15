@@ -1,5 +1,5 @@
 import app from "@/src/app";
-import configs from "@/src/utils/config";
+import configs from "@/src/config";
 import connectToDatabase from "./database/connection";
 
 function run() {
