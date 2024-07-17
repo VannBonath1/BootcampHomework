@@ -7,22 +7,35 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # Specifies that the job should run on the latest Ubuntu virtual environment provided by GitHub
+    defaults:
+      run:
+        working-directory: "." # Adjust this to the root directory of your Node.js project
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v4 # This step checks out your repository under $GITHUB_WORKSPACE, so your workflow can access it
+        with:
+          fetch-depth: 0 # Ensures all branches and tags are fetched, useful for versioning or other git-related operations
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4 # This step sets up a Node.js environment with a specified version
         with:
-          node-version: "20" # Specify your Node.js version
+          node-version: "20" # Specify the Node.js version you require, e.g., '14', '16'
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install # Runs yarn install to install all dependencies defined in your package.json
 
-      - name: Build project
-        run: yarn build
+      - name: Run build
+        run: yarn build # Executes the build script defined in your package.json
 
       - name: Run tests
-        run: yarn test
+        env:
+          MONGODB_URL: ${{ secrets.MONGODB_URL }} # Replace with actual environment variables needed for testing
+        run: yarn test # Executes tests using yarn. Customize this command based on your test runner
+
+      - name: Archive build artifacts
+        uses: actions/upload-artifact@v4 # Archives build artifacts for use in later jobs or for deployment
+        with:
+          name: artifact-name # Optionally change the name of the artifact
+          path: ./build # Adjust this to where your build outputs artifacts, e.g., './build'

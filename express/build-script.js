@@ -3,10 +3,6 @@ const path = require("path");
 const fs = require("fs-extra");
 const copy = require("esbuild-plugin-copy").default;
 
-// Issue
-// 1: Esbuild could not load swagger.json
-// 2: SwaggerUIBundle is not defined in production
-
 esbuild
   .build({
     entryPoints: ["src/server.ts"],
@@ -21,14 +17,24 @@ esbuild
     plugins: [
       // (2) Solve: https://stackoverflow.com/questions/62136515/swagger-ui-express-plugin-issue-with-webpack-bundling-in-production-mode/63048697#63048697
       copy({
-        assets: {
-          from: [
-            "../../../node_modules/swagger-ui-dist/*.css",
-            "../../../node_modules/swagger-ui-dist/*.js",
-            "../../../node_modules/swagger-ui-dist/*.png",
-          ],
-          to: ["./"],
-        },
+        assets: [
+          {
+            from: `../node_modules/swagger-ui-dist/*.css`,
+            to: "./",
+          },
+          {
+            from: `../node_modules/swagger-ui-dist/*.js`,
+            to: "./",
+          },
+          {
+            from: `../node_modules/swagger-ui-dist/*.png`,
+            to: "./",
+          },
+          {
+            from: "./src/configs/.env.production",
+            to: "./configs",
+          },
+        ],
       }),
     ],
     resolveExtensions: [".ts", ".js"],
@@ -46,6 +52,20 @@ esbuild
       path.resolve(__dirname, "build/docs/swagger.json")
     );
     console.log("Swagger JSON copied successfully!");
+
+    // Copy package.json after ensuring the build was successful
+    fs.copySync(
+      path.resolve(__dirname, "package.json"),
+      path.resolve(__dirname, "build/package.json")
+    );
+    console.log("Package.json copied successfully!");
+
+    // Copy ecosystem.config.js after ensuring the build was successful
+    fs.copySync(
+      path.resolve(__dirname, "ecosystem.config.js"),
+      path.resolve(__dirname, "build/ecosystem.config.js")
+    );
+    console.log("Ecosystem Config copied successfully!");
   })
   .catch((error) => {
     console.error("Build failed:", error);

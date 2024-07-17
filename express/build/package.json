@@ -13,8 +13,7 @@
     "db:insert": "ts-node src/database/scripts/insert-data.ts",
     "pm2:list": "pm2 list",
     "pm2:stop": "pm2 stop all",
-    "pm2:delete": "pm2 delete all",
-    "test": "jest"
+    "pm2:delete": "pm2 delete all"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
